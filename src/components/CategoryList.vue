@@ -53,18 +53,24 @@ export default {
 
 
 }
+
+
+.category-item {
+  display: flex;
+  justify-content: center;
+}
+
 .category-header {
   margin: auto;
   position: relative;
   text-align: center;
   color: white;
-  font-size: 12px;
+  font-size: 15px;
   background:black;
   width: 70%;
 }
 .category-header img{
-  /* Add the blur effect */
-  opacity: 30%;
+  opacity: 5%;
   width: 100%;
   height: auto;
 }
@@ -79,12 +85,12 @@ export default {
 
 
 .questoinnaire-item {
-    width: 80%;
+    width: 50%;
     background-color: #eee;
-    margin: 12px;
     padding: 15px;
     border-radius: 5px;
-
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .questoinnaire-item:hover {
