@@ -41,24 +41,7 @@ export default {
 </script>
 
 <style scoped>
-@media(min-width:768px) {
-  .category-item {
-  display: flex;
-  justify-content: center;
-  }
 
-  .category-header span {
-    font-size: 30px;
-  }
-
-
-}
-
-
-.category-item {
-  display: flex;
-  justify-content: center;
-}
 
 .category-header {
   margin: auto;
@@ -70,7 +53,7 @@ export default {
   width: 70%;
 }
 .category-header img{
-  opacity: 5%;
+  opacity: 0.05;
   width: 100%;
   height: auto;
 }
@@ -85,12 +68,11 @@ export default {
 
 
 .questoinnaire-item {
-    width: 50%;
+    width: 70%;
     background-color: #eee;
     padding: 15px;
     border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px auto;
 }
 
 .questoinnaire-item:hover {
@@ -101,4 +83,24 @@ export default {
 .link {
   color: black;
 }
+
+
+@media(min-width:768px) {
+  .category-item {
+  display: flex;
+  justify-content: center;
+  }
+
+  .category-header span {
+    font-size: 30px;
+  }
+
+  .questoinnaire-item {
+        margin: 10px;
+  }
+
+}
+
+
+
 </style>
