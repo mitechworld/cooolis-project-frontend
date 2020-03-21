@@ -6,7 +6,6 @@
         <!-- Footer Elements -->
         <div class="container">
 
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima culpa asperiores consequatur recusandae eius commodi nostrum nemo voluptas ullam, ipsam vitae molestias perferendis doloremque, voluptatem obcaecati quibusdam delectus? Earum, nemo?
 
         </div>
         <!-- Footer Elements -->
@@ -40,7 +39,9 @@ export default {
     padding: 10px;
 }
 
-
+.container {
+    height: 30px;
+}
 </style>
 
 
