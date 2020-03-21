@@ -1,15 +1,18 @@
 <template>
     <div> 
-        توانایی شما در این زمینه در حدود {{ final_score }} درصد است.
+        <CircleAnimate :final_score="final_score"/>
     </div>
 </template>
 
 <script>
+import CircleAnimate from './CircleAnimate'
+
 export default {
     name: 'FinalResult',
+    components: {
+        CircleAnimate,
+    },
     props: ['final_score',]
-        
-    
 
 }
 </script>
