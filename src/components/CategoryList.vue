@@ -53,7 +53,7 @@ export default {
   width: 70%;
 }
 .category-header img{
-  opacity: 0.05;
+  opacity: 0.2;
   width: 100%;
   height: auto;
 }

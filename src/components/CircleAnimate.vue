@@ -1,10 +1,10 @@
 <template>
     <div>
 
-        <svg height="50" width="50" viewBox="0 0 20 20">
+        <svg height="100" width="100" viewBox="0 0 20 20">
             <circle r="10" cx="10" cy="10" fill="gray" />
             <circle class="pieanimate" r="5" cx="10" cy="10" fill="transparent"
-            stroke="blue"
+            stroke="#00cd90"
             stroke-width="10"
             :stroke-dasharray="stroke_values"
             transform="rotate(-90) translate(-20)" />
@@ -15,7 +15,7 @@
              {{final_score}}
         درصد است
         </div>
-        
+
 
 
     </div>
@@ -48,6 +48,11 @@ export default {
 
 <style scoped>
 
+svg {
+    margin: 5px;
+}
+
+
 .pieanimate {
     animation-name: fillme;
     animation-duration: 4s;
@@ -61,7 +66,6 @@ export default {
 
 .scorepop {
     height: 50px;
-
     visibility: hidden;
     animation-name: popmsg;
     animation-duration: 1s;

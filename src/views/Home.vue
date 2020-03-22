@@ -11,6 +11,9 @@ export default {
   name: "Home",
   components: {
     CategoryList,
+  },
+  created () {
+    document.title = "کولیس :: ابزاری برای ارزیابی مهارت شما";
   }
 }
 </script>

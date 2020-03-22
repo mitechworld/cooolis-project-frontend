@@ -1,5 +1,11 @@
 <template>
   <div id="app" class="container">
+
+    <header id="questionnaire-header">
+      <div id="questionnaire-title">{{ this.title }}</div>
+      <div id="questionnaire-description">{{ this.description }} </div>
+    </header>
+
     <QuestionBox v-if="remained_questions"
     :currentQuestion="questions[index]" 
     :next="next"
@@ -28,6 +34,8 @@ export default {
       questions: [],
       index: 0,
       remained_questions: 0,
+      title: '',
+      description: '',
       final_score: 0
     }
   },
@@ -61,6 +69,8 @@ export default {
       .then((response) => {
         this.questions = response.data.questions
         this.remained_questions = this.questions.length
+        this.title = response.data.title
+        this.description = response.data.description
         }, (error) => {
           console.log(error);
         });
@@ -78,4 +88,19 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+#questionnaire-header{
+  background:#e4f1f7;
+  margin-bottom: -2px;
+  padding: 12px;
+}
+
+#questionnaire-title{
+  font-size: 21px;
+}
+
+#questionnaire-description{
+  font-size: 15px;
+}
+
 </style>
