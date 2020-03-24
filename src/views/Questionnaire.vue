@@ -6,22 +6,25 @@
       <div id="questionnaire-description">{{ this.description }} </div>
     </header>
 
-    <QuestionBox v-if="remained_questions"
+    <QuestionBox v-if="show_questions"
     :currentQuestion="questions[index]" 
     :next="next"
     ref="questionBoxRef"/>
 
-    <FinalResult v-if="!remained_questions"
+    <FinalResult v-else
     :final_score="final_score"/>
   </div>
 </template>
 
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
 import QuestionBox from '../components/QuestionBox.vue'
 import FinalResult from '../components/FinalResult.vue'
+
+import {  mapGetters, mapActions } from 'vuex'
+
 
 export default {
   name: 'Questionnaire',
@@ -31,49 +34,47 @@ export default {
   },
   data () {
     return {
-      questions: [],
       index: 0,
-      remained_questions: 0,
-      title: '',
-      description: '',
-      final_score: 0
+      show_questions: true
     }
   },
   methods: {
+    ...mapActions(['fetchQuestionList', 'sendAnswers']),
+
     next() {
       this.index++
-      this.remained_questions--
-      if (this.remained_questions === 0) {
-        let data = this.$refs.questionBoxRef.all_answers
-        axios({
-          method: 'post',
-          url: 'question/sendanswers/',
-          data: data
-        })
-        .then((response) => {
-          this.final_score = response.data.score.toFixed(2)
-        }, (error) => {
-          console.log(error);
-        });
-  } 
+      if (this.index === this.number_of_questions){
+        this.show_questions = false
+      }
+
+    if (!this.show_questions) {
+      this.sendAnswers(this.$refs.questionBoxRef.all_answers)  
     }
+
+  //     if (!this.show_questions) {
+  //       let data = this.$refs.questionBoxRef.all_answers
+  //       axios({
+  //         method: 'post',
+  //         url: 'question/sendanswers/',
+  //         data: data
+  //       })
+  //       .then((response) => {
+  //         this.final_score = response.data.score.toFixed(2)
+  //       }, (error) => {
+  //         console.log(error);
+  //       }
+  //       );
+  // } 
+    },
+
   },
-  mounted: function(){
+  mounted() {
+    this.fetchQuestionList(this.$route.params.id)
+  },
+  computed: { 
+    
+  ...mapGetters(['questions','number_of_questions', 'title', 'description', 'final_score']),
 
-    let url = `question/questionnaire/${this.$route.params.id}/`
-
-    axios({
-      method: 'get',
-      url: url,
-    })
-      .then((response) => {
-        this.questions = response.data.questions
-        this.remained_questions = this.questions.length
-        this.title = response.data.title
-        this.description = response.data.description
-        }, (error) => {
-          console.log(error);
-        });
 
   }
 

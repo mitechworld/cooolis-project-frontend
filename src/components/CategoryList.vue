@@ -33,8 +33,6 @@ export default {
       ...mapActions(['fetchCategoryList'])
     },
     created() {
-      console.log(process.env.VUE_APP_IP)
-
       this.fetchCategoryList()
   }
 }

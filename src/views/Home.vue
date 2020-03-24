@@ -13,7 +13,7 @@ export default {
     CategoryList,
   },
   created () {
-    document.title = "کولیس :: ابزاری برای ارزیابی مهارت شما";
+    // document.title = "کولیس :: ابزاری برای ارزیابی مهارت شما";
   }
 }
 </script>
