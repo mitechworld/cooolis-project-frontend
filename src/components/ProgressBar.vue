@@ -1,5 +1,8 @@
 <template>
- 
+    <div id="bar-edge">
+        <div id="bar-inside" :style="{width: progress + '%'}">
+        </div>
+    </div>    
 </template>
 
 <script>
@@ -14,7 +17,7 @@ export default {
 #bar-edge {
     background-color: #00cd90;
     height: 10px;
-    width: 20%;
+    width: 100%;
 }
 
 

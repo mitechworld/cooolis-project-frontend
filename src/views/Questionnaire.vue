@@ -63,7 +63,7 @@ export default {
   },
   computed: { 
   progress : function () {
-    return (this.index+1)/this.number_of_questions * 100
+    return (this.index)/this.number_of_questions * 100
   },
   ...mapGetters(['questions','number_of_questions', 'title', 'description', 'final_score']),
 
