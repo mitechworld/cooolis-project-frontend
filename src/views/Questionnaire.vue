@@ -1,10 +1,13 @@
 <template>
   <div id="app" class="container">
 
+
     <header id="questionnaire-header">
       <div id="questionnaire-title">{{ this.title }}</div>
       <div id="questionnaire-description">{{ this.description }} </div>
     </header>
+
+    <ProgressBar :progress="progress"/>
 
     <QuestionBox v-if="show_questions"
     :currentQuestion="questions[index]" 
@@ -22,6 +25,7 @@
 
 import QuestionBox from '../components/QuestionBox.vue'
 import FinalResult from '../components/FinalResult.vue'
+import ProgressBar from '../components/ProgressBar.vue'
 
 import {  mapGetters, mapActions } from 'vuex'
 
@@ -31,11 +35,12 @@ export default {
   components: {
     QuestionBox,
     FinalResult,
+    ProgressBar
   },
   data () {
     return {
       index: 0,
-      show_questions: true
+      show_questions: true,
     }
   },
   methods: {
@@ -47,24 +52,9 @@ export default {
         this.show_questions = false
       }
 
-    if (!this.show_questions) {
-      this.sendAnswers(this.$refs.questionBoxRef.all_answers)  
-    }
-
-  //     if (!this.show_questions) {
-  //       let data = this.$refs.questionBoxRef.all_answers
-  //       axios({
-  //         method: 'post',
-  //         url: 'question/sendanswers/',
-  //         data: data
-  //       })
-  //       .then((response) => {
-  //         this.final_score = response.data.score.toFixed(2)
-  //       }, (error) => {
-  //         console.log(error);
-  //       }
-  //       );
-  // } 
+      if (!this.show_questions) {
+        this.sendAnswers(this.$refs.questionBoxRef.all_answers)  
+      }
     },
 
   },
@@ -72,7 +62,9 @@ export default {
     this.fetchQuestionList(this.$route.params.id)
   },
   computed: { 
-    
+  progress : function () {
+    return (this.index+1)/this.number_of_questions * 100
+  },
   ...mapGetters(['questions','number_of_questions', 'title', 'description', 'final_score']),
 
 
